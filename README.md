@@ -25,8 +25,6 @@
 ![App Screenshot](Image/Detail.png)
 
 
-# Project Output Video
-[Watch Demo Video](./Video/CRUD_Operation_ASP_MVC.mp4)
 
 
 
