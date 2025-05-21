@@ -10,8 +10,23 @@
 
 ### Demonstrates connection to a SQL Server database and effective data manipulation.
 
-# Project Output SnapShot
 
+# Project Output SnapShot
+## Index Page
+![App Screenshot](Image/Index.png)
+
+## Create Page
+![App Screenshot](Image/Create.png)
+
+## Edit Page
 ![App Screenshot](Image/Edit.png)
+
+## Detail Page
+![App Screenshot](Image/Detail.png)
+
+
+# Project Output Video
+[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://youtu.be/VIDEO_ID)
+
 
 
