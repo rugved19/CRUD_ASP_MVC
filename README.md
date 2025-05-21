@@ -26,7 +26,7 @@
 
 
 # Project Output Video
-[Watch Demo Video](./video/CRUD_Operation_ASP_MVC.mp4)
+[Watch Demo Video](./Video/CRUD_Operation_ASP_MVC.mp4)
 
 
 
