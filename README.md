@@ -12,6 +12,6 @@
 
 # Project Output SnapShot
 
-![App Screenshot](image/Edit.png)
+![App Screenshot](Image/Edit.png)
 
 
