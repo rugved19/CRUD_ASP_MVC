@@ -1,59 +1,104 @@
 ﻿@model IEnumerable<EFCodeFirstApproach.Models.Student>
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Students";
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
 
-@*@Html.Raw(TempData["InsertMessage"])*@
-@*@Html.Raw(TempData["UpdateMessage"])*@
-@Html.Raw(TempData["DeleteMessage"])
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
+        }
 
-<p style="color:green;">@TempData["InsertMessage"]</p>
-<p style="color:green;">@TempData["UpdateMessage"]</p>
-<p style="color:green;">@TempData["DeleteMsg"]</p>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            width: 90%;
+            max-width: 1000px;
+        }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Age)
-        </th>
-        <th></th>
-    </tr>
+        .table thead {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
+        .btn {
+            border-radius: 8px;
+        }
 
-</table>
+        .alert {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="text-dark">Students</h2>
+            <a href="@Url.Action("Create")" class="btn btn-success shadow">
+                <i class="bi bi-plus-circle"></i> Create New
+            </a>
+        </div>
+
+        @if (TempData["InsertMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["InsertMessage"]</div>
+        }
+        @if (TempData["UpdateMessage"] != null)
+        {
+            <div class="alert alert-info">@TempData["UpdateMessage"]</div>
+        }
+        @if (TempData["DeleteMsg"] != null)
+        {
+            <div class="alert alert-danger">@TempData["DeleteMsg"]</div>
+        }
+
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered align-middle mb-0 bg-white rounded">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().Gender)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().Age)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Name)</td>
+                            <td>@Html.DisplayFor(m => item.Gender)</td>
+                            <td>@Html.DisplayFor(m => item.Age)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-sm btn-primary me-1">Edit</a>
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-sm btn-info me-1 text-white">Details</a>
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
